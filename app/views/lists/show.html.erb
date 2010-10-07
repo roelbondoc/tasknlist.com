@@ -1,0 +1,14 @@
+<h1><input id="list_title" type="text" name="list[title]" value="<%=h @list.title%>" class="noedit"/></h1>
+<form id="new_task_form">
+  <h2><input id="task_title" type="text" name="task[title]"/></h2>
+</form>
+<ul id="tasks">
+  <% @list.tasks.each do |task| %>
+    <li id="<%=task.id%>">
+      <div class="status <%=task.complete? ? 'complete' : 'incomplete'%>">&nbsp;</div>
+      <div class="delete">&nbsp;</div>
+      <input class="checkbox" type="checkbox" <%='checked="checked"' if task.complete?%>/>
+      <input class="task_title noedit" type="text" name="task[title]" value="<%=task.title%>"/>
+    </li>
+  <% end %>
+</ul>
